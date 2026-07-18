@@ -2,16 +2,21 @@
 
 class Book:
     def __init__(self, title, page_count):
-        self.title = input("Enter the title of the book: ")
-        
-        self.page_count = input("Enter the page count: ")
-        try:
-            self.page_count = int(self.page_count)
-        except ValueError:
+        self.title = title
+        self.page_count = page_count
+
+    @property
+    def page_count(self):
+        return self._page_count
+    
+    @page_count.setter
+    def page_count(self, value):
+        if isinstance(value, int):
+            self._page_count = value
+        else:
             print("page_count must be an integer")
 
     def turn_page(self):
-        print(f"Flipping the page...wow, you read fast!")
+        print("Flipping the page...wow, you read fast!")
 
-book = Book()
-book.turn_page()
+
